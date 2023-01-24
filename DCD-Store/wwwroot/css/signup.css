@@ -1,0 +1,39 @@
+﻿.form {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 800px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.form__input {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#e_error, #p_error, #u_error, #a_error, #ph_error, #cp_error {
+    color: red;
+    margin-bottom: -5px;
+}
+
+.btn {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+    .btn:hover {
+        background-color: gray;
+        color: white;
+        cursor: pointer;
+    }

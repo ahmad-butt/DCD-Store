@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/login.css" />
+    <script src="~/js/validateLogin.js"></script>
+</head>
+<body>
+    <div>
+        <form onsubmit="return validate()" name="login" class="form" method="POST">
+            <h2>
+                Login
+            </h2>
+            <div>
+                <p>Email:</p> <input class="form__input" type="text" name="email" placeholder="Enter email" />
+                <p id="e_error"></p>
+            </div>
+            <div>
+                <p>Password:</p> <input class="form__input" type="password" name="passwd" placeholder="Enter password" />
+                <p id="p_error"></p>
+            </div>
+            <button class="btn" name="action" value="login">Login</button>
+            <br />
+            <a asp-action="Signup">Create Account</a>
+        </form>
+    </div>
+</body>
+</html>

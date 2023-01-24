@@ -1,0 +1,36 @@
+﻿.form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.form__input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#e_error, #p_error {
+    color: red;
+}
+
+.btn {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 5px;
+}
+
+    .btn:hover {
+        background-color: gray;
+        color: white;
+        cursor: pointer;
+    }

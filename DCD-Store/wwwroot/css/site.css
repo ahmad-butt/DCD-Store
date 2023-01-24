@@ -1,22 +1,18 @@
-﻿html {
-  font-size: 14px;
+﻿
+.header {
+    display: flex;
+    flex-direction: row;
+    /*width: 95vw;*/
+    background-color: black;
+    margin-bottom: 10px;
+    color: white;
+    /*border: 2px solid black;*/
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+.header h1 {
+    flex: 1;
+    margin-left: 20px;
+    color: white;
+    font-style: italic;
+    text-decoration: none;
 }
