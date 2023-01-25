@@ -1,22 +1,34 @@
 ﻿using System;
+using System.Linq;
 namespace DCD_Store.Models
 {
 	public class UserRepository
 	{
-		List<User> users = new List<User>();
-		public User CreateUser(string username, string email, string passwd, int age, string phone)
+		public User? CreateUser(string username, string email, string passwd, int age, string phone)
 		{
-			User newUser = new User
+            DcdStoreContext context = new DcdStoreContext();
+
+            int count = context.Users.Where(user=>user.Email == email).Count();
+
+            if (count == 0)
             {
-                Id = 1,
-                Username = username,
-                Email = email,
-                Password = passwd,
-                Age = age,
-                Phone = phone
-            };
-            users.Add(newUser);
-            return newUser;
+                User newUser = new User
+                {
+                    Username = username,
+                    Email = email,
+                    Password = passwd,
+                    Age = age,
+                    Phone = phone
+                };
+
+                context.Add(newUser);
+                context.SaveChanges();
+
+                return newUser;
+            } else
+            {
+                return null;
+            }
 		}
 	}
 }

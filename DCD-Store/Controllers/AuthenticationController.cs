@@ -28,8 +28,14 @@ namespace DCD_Store.Controllers
         public IActionResult Signup(string? username, string? email, string? passwd, string? age, string? phone)
         {
             UserRepository userRepo = new UserRepository();
-            User user = userRepo.CreateUser(username, email, passwd, int.Parse(age), phone);
-            return View("Welcome", user);
+            User? user = userRepo.CreateUser(username, email, passwd, int.Parse(age), phone);
+            if (user != null)
+            {
+                return View("Login");
+            } else
+            {
+                return View("Error", "User With This Email Already Exists...");
+            }
         }
     }
 }
