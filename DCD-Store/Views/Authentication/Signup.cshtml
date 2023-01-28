@@ -1,45 +1,101 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Signup</title>
+    <title>Sign Up</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/signup.css" />
     <script src="~/js/validateSignup.js"></script>
 </head>
 <body>
+
     <div>
-        <form onsubmit="return validate()" method="post" action="/Authentication/Signup" name="signup" class="form">
-            <h2>
-                Signup
-            </h2>
-            <div class="temp">
-                <p>Username: </p> <input class="form__input" type="text" name="username" placeholder="Enter username" />
-                <p id="u_error"></p>
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                             class="img-fluid" alt="Sample image">
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <form onsubmit="return validate()" method="post" action="/Authentication/Signup" name="signup" class="form">
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="Enter a valid username" name="username" />
+                                <p class="error" id="u_error"></p>
+                            </div>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control form-control-lg"
+                                       placeholder="Enter email address" name="email" />
+                                <p class="error" id="e_error"></p>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-3">
+                                <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                       placeholder="Enter password" name="passwd" />
+                                <p class="error" id="p_error"></p>
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                       placeholder="Confirm password" name="c_passwd" />
+                                <p class="error" id="cp_error"></p>
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="number" id="form3Example4" class="form-control form-control-lg"
+                                       placeholder="Enter age" name="age" />
+                                <p class="error" id="a_error"></p>
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="tel" id="form3Example4" class="form-control form-control-lg"
+                                       placeholder="Enter Phone" name="phone" />
+                                <p class="error" id="ph_error"></p>
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button class="btn btn-primary btn-lg"
+                                        style="padding-left: 2.5rem; padding-right: 2.5rem;" name="action" value="signup">
+                                    Signup
+                                </button>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">
+                                    Already have an account? <a asp-action="Login"
+                                                                class="link-danger">Login</a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Email: </p> <input class="form__input" type="text" name="email" placeholder="Enter email" />
-                <p id="e_error"></p>
+            <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+                <!-- Copyright -->
+                <div class="text-white mb-3 mb-md-0">
+                    Copyright © 2023. All rights reserved.
+                </div>
+                <!-- Copyright -->
+                <!-- Right -->
+                <div>
+                    <a href="#!" class="text-white me-4">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#!" class="text-white me-4">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#!" class="text-white me-4">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#!" class="text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <!-- Right -->
             </div>
-            <div>
-                <p>Password:</p> <input class="form__input" type="password" name="passwd" placeholder="Enter password" />
-                <p id="p_error"></p>
-            </div>
-            <div>
-                <p>Confirm Password:</p> <input class="form__input" type="password" name="c_passwd" placeholder="Enter password" />
-                <p id="cp_error"></p>
-            </div>
-            <div>
-                <p>Age: </p> <input class="form__input" type="number" name="age" placeholder="Enter age" />
-                <p id="a_error"></p>
-            </div>
-            <div>
-                <p>Phone no: </p> <input class="form__input" type="text" name="phone" placeholder="Enter phone" />
-                <p id="ph_error"></p>
-            </div>
-            <button class="btn" name="action" value="signup">Signup</button>
-            <a asp-action="Login">Already have an account?</a>
-        </form>
+        </section>
     </div>
 </body>
 </html>

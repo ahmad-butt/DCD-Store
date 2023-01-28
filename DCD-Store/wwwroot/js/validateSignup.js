@@ -1,4 +1,5 @@
-﻿function validate() {
+﻿
+function validate() {
     var flag1 = true;
     var email = document.signup.email.value;
     console.log(email);
@@ -72,4 +73,3 @@
 
     return (flag1 && flag2 && flag3 && flag4 && flag5 && flag6);
 }
-

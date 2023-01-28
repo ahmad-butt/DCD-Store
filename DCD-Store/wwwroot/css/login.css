@@ -1,4 +1,4 @@
-﻿.form {
+﻿/*.form {
     display: flex;
     flex-direction: column;
     width: 350px;
@@ -8,29 +8,27 @@
     margin: auto;
     border: 1px solid grey;
     border-radius: 15px;
+}*/
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
 
-.form__input {
-    padding: 10px;
-    width: 200px;
-    border: 1px solid grey;
-    border-radius: 5px;
+.h-custom {
+    height: calc(100% - 73px);
 }
 
-#e_error, #p_error {
-    color: red;
-}
-
-.btn {
-    width: 80px;
-    padding: 5px;
-    border: 1px solid grey;
-    background-color: white;
-    border-radius: 5px;
-}
-
-    .btn:hover {
-        background-color: gray;
-        color: white;
-        cursor: pointer;
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
     }
+}
+
+.error {
+    color: red;
+    margin-left: 10px;
+}

@@ -1,17 +1,18 @@
-﻿
-.header {
+﻿.header {
     display: flex;
     flex-direction: row;
-    /*width: 95vw;*/
-    background-color: black;
+    background-color: #0C6DFD;
     margin-bottom: 10px;
     color: white;
-    /*border: 2px solid black;*/
+    height: 70px;
 }
 
 .header h1 {
     flex: 1;
-    margin-left: 20px;
+    width: 100px;
+    height: 50px;
+    margin: auto;
+    margin-left: 10px;
     color: white;
     font-style: italic;
     text-decoration: none;

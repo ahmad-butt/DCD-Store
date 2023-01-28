@@ -25,7 +25,7 @@ namespace DCD_Store.Controllers
 
         // POST: /<controller>/
         [HttpPost]
-        public IActionResult Signup(string? username, string? email, string? passwd, string? age, string? phone)
+        public IActionResult Signup(string username, string email, string passwd, string age, string phone)
         {
             UserRepository userRepo = new UserRepository();
             User? user = userRepo.CreateUser(username, email, passwd, int.Parse(age), phone);
@@ -35,6 +35,21 @@ namespace DCD_Store.Controllers
             } else
             {
                 return View("Error", "User With This Email Already Exists...");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string passwd)
+        {
+            UserRepository userRepo = new UserRepository();
+            User? user = userRepo.Login(email, passwd);
+            if (user != null)
+            {
+                return View("Home");
+            }
+            else
+            {
+                return View("Error", "User does not exist...");
             }
         }
     }

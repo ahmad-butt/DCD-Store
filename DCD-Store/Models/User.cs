@@ -5,7 +5,7 @@ namespace DCD_Store.Models;
 
 public partial class User
 {
-    public long Id { get; set; }
+    public long? Id { get; set; }
 
     public string? Username { get; set; }
 

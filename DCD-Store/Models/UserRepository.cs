@@ -4,6 +4,11 @@ namespace DCD_Store.Models
 {
 	public class UserRepository
 	{
+        DcdStoreContext context;
+        public UserRepository()
+        {
+            context = new DcdStoreContext();
+        }
 		public User? CreateUser(string username, string email, string passwd, int age, string phone)
 		{
             DcdStoreContext context = new DcdStoreContext();
@@ -30,6 +35,15 @@ namespace DCD_Store.Models
                 return null;
             }
 		}
+
+        public User? Login(string email, string passwd)
+        {
+            List<User> u = context.Users.Where(u => (u.Email == email && u.Password == passwd)).ToList();
+            if(u.Count()>0)
+                return u[0];
+            else
+                return null;
+        }
 	}
 }
 
