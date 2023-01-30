@@ -45,12 +45,21 @@ namespace DCD_Store.Controllers
             User? user = userRepo.Login(email, passwd);
             if (user != null)
             {
-                return View("Home");
+                HttpContext.Response.Cookies.Append("user", user.Username);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 return View("Error", "User does not exist...");
             }
+        }
+
+        public IActionResult Signout()
+        {
+            CookieOptions options = new CookieOptions();
+            options.Expires = DateTime.Now.AddDays(-1d);
+            HttpContext.Response.Cookies.Append("user", "", options = options);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

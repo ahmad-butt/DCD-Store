@@ -10,11 +10,13 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <None Remove="Views\Authentication\" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Views\Home\" />
+    <None Remove="Views\Authentication\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\Authentication\" />
   </ItemGroup>
   <ItemGroup>

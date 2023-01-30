@@ -1,0 +1,50 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        @{
+            Html.RenderPartial("_Hero");
+        }
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="mt-5">Categories</h2>
+            <div style="margin: 20px" class="row">
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+                @{
+                    Html.RenderPartial("_Categories");
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h2>Popular Ads</h2>
+        </div>
+        <div style="margin-bottom: 20px" class="col-12">
+            <div class="height d-flex flex-row justify-content-around align-items-center">
+                @{
+                    Html.RenderPartial("_FeaturedItems");
+                }
+                @{
+                    Html.RenderPartial("_FeaturedItems");
+                }
+                @{
+                    Html.RenderPartial("_FeaturedItems");
+                }
+            </div>
+        </div>
+    </div>
+</div>
