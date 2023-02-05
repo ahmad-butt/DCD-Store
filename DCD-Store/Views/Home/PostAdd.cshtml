@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "DCD Store Ad Upload";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DCD Store Ad Upload</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">DCD Store Ad Upload</h2>
+        <form method="post" action="/Home/PostAdd" name="postadd" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" name ="description" id="description" rows="3" placeholder="Enter description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select class="form-control" id="city" name="city">
+                    <option>Select City</option>
+                    <option>Lahore</option>
+                    <option>Kasur</option>
+                    <option>Karachi</option>
+                    <option>Peshawar</option>
+                    <option>Quetta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category">
+                    <option>Select Category</option>
+                    <option>Category 1</option>
+                    <option>Category 2</option>
+                    <option>Category 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="images">Images:</label>
+                <input type="file" name="postedFiles" multiple />
+            </div>
+            <button style="margin-bottom: 265px" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+

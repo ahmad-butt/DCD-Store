@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using post_add.Models;
 
 namespace DCD_Store.Models;
 
 public partial class DcdStoreContext : DbContext
 {
     public DbSet<User> Users { get; set; }
-    //    public DcdStoreContext()
-    //    {
-    //    }
+    public DbSet<Add> Adds { get; set; }
 
-    //    public DcdStoreContext(DbContextOptions<DcdStoreContext> options)
-    //        : base(options)
-    //    {
-    //    }
-
-    //    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost; Database=DCD_Store; User Id=sa; Password=rootroot123; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost; Database=DCD_Store; User Id=sa; Password=132qweasd; TrustServerCertificate=True");
 }
