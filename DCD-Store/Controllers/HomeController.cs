@@ -115,6 +115,11 @@ namespace DCD_Store.Controllers
                 return View("Error", "Something went wrong");
             }
         }
+        [HttpGet]
+        public IActionResult CategoryDetail(string category)
+        {
+            return View("Category", category);
+        }
     }
 }
 

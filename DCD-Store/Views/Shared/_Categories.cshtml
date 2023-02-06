@@ -1,9 +1,9 @@
 ﻿<div class="col-sm-6 col-md-4">
     <div class="card my-3">
         <div class="card-body">
-            <h5 class="card-title">Electronics</h5>
+            <h5 class="card-title">@Model</h5>
             <p class="card-text">Find the latest deals on phones, laptops, and other electronics.</p>
-            <a href="category/electronics" class="btn btn-primary">Browse Ads</a>
+            <a asp-action="CategoryDetail" asp-route-category=@Model class="btn btn-primary">Browse Ads</a>
         </div>
     </div>
 </div>
