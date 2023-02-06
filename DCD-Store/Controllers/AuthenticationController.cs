@@ -46,6 +46,7 @@ namespace DCD_Store.Controllers
             if (user != null)
             {
                 HttpContext.Response.Cookies.Append("user", user.Username);
+                HttpContext.Response.Cookies.Append("uid", user.ID.ToString());
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -59,6 +60,7 @@ namespace DCD_Store.Controllers
             CookieOptions options = new CookieOptions();
             options.Expires = DateTime.Now.AddDays(-1d);
             HttpContext.Response.Cookies.Append("user", "", options = options);
+            HttpContext.Response.Cookies.Append("uid", "", options = options);
             return RedirectToAction("Index", "Home");
         }
     }

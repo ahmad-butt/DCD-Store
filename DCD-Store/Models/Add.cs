@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
+using DCD_Store.Models;
 
 namespace post_add.Models
 {
-    public class Add
+    public class Add : FullAuditModel
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public int UserId { get; set; }
 

@@ -23,36 +23,46 @@
             <a class="navbar-brand" href="/Home/Index">DCD Store</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Products</a>
-                    </li>
-                </ul>
+                    @{
+                        if (!string.IsNullOrEmpty(Context.Request.Cookies["user"]))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" asp-action="PostAdd">
+                                    <button type="button" class="btn btn-warning">
+                                        New Ad
+                                    </button>
+                                </a>
+                            </li>
+                        }
+                    }
+                    </ul>
 
-                @{
-                    if (string.IsNullOrEmpty(Context.Request.Cookies["user"]))
-                    {
-                        <a asp-action="Login">
-                            <button style="margin-left: 10px" type="button" class="btn btn-warning">Login</button>
-                        </a>
+                    @{
+                        if (string.IsNullOrEmpty(Context.Request.Cookies["user"]))
+                        {
+                            <a asp-action="Login">
+                                <button style="margin-left: 10px" type="button" class="btn btn-warning">Login</button>
+                            </a>
+                        }
+                        else
+                        {
+                            <form class="d-flex input-group w-auto">
+                                <input type="search"
+                                       class="form-control"
+                                       placeholder="Search Product"
+                                       aria-label="Search" />
+                                <button type="button" class="btn btn-warning">Search</button>
+                            </form>
+                            <p style="margin: 20px; color: white; font-weight: 500" class="font-italic">Welcome, @Context.Request.Cookies["user"]</p>
+                            <a asp-action="Signout">
+                                <button style="margin-left: 10px" type="button" class="btn btn-warning">Signout</button>
+                            </a>
+                        }
                     }
-                    else
-                    {
-                        <form class="d-flex input-group w-auto">
-                            <input type="search"
-                                   class="form-control"
-                                   placeholder="Search Product"
-                                   aria-label="Search" />
-                            <button type="button" class="btn btn-warning">Search</button>
-                        </form>
-                        <p style="margin: 20px; color: white; font-weight: 500" class="font-italic">Welcome, @Context.Request.Cookies["user"]</p>
-                        <a asp-action="Signout">
-                            <button style="margin-left: 10px" type="button" class="btn btn-warning">Signout</button>
-                        </a>
-                    }
-                }
-            </div>
+                </div>
         </div>
     </nav>
+    @RenderSection("hero", required: false)
     @RenderBody()
     <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <!-- Copyright -->

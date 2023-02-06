@@ -10,6 +10,12 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
+    @{
+        if (string.IsNullOrEmpty(Context.Request.Cookies["user"]))
+        {
+            Context.Response.Redirect("/Home/Index");
+        }
+    }
     <div class="container">
         <h2 class="text-center mt-5">DCD Store Ad Upload</h2>
         <form method="post" action="/Home/PostAdd" name="postadd" enctype="multipart/form-data">

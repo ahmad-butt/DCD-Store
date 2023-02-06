@@ -1,9 +1,12 @@
 ﻿<div class="container-fluid">
-    <div class="row">
-        @{
-            Html.RenderPartial("_Hero");
-        }
-    </div>
+    @section hero{
+        <div class="row" style="margin:10px">
+            <div style="margin-top: 30px" class="col-12 text-center">
+                <h1 class="display-4">Welcome to Our Classified Website</h1>
+                <p class="lead">Here you can find all the latest classified ads for buying and selling goods and services. Browse through our categories to find what you're looking for.</p>
+            </div>
+        </div>
+    }
     <div class="row">
         <div class="col-12 text-center">
             <h2 class="mt-5">Categories</h2>

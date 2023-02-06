@@ -14,10 +14,11 @@ namespace DCD_Store.Models
         }
 
 
-        public Add PostAdd(string title, string description, string city, string category)
+        public Add PostAdd(int uid, string title, string description, string city, string category)
         {
             Add newAdd = new Add
             {
+                UserId = uid,
                 Title = title,
                 Description = description,
                 City = city,

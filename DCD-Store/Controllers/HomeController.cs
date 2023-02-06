@@ -45,8 +45,9 @@ namespace DCD_Store.Controllers
         [HttpPost]
         public IActionResult PostAdd(string title, string description, string category, string city, List<IFormFile> postedFiles)
         {
+            int uid = int.Parse(HttpContext.Request.Cookies["uid"]);
             AddRepository addRepo = new AddRepository();
-            Add? add = addRepo.PostAdd(title: title, description: description, city: city, category: category); 
+            Add? add = addRepo.PostAdd(uid:uid, title: title, description: description, city: city, category: category); 
             if (add != null)
             {
                 string wwwPath = this.Environment.WebRootPath;
@@ -73,7 +74,8 @@ namespace DCD_Store.Controllers
                     }
                 }
 
-                return View("Error", ""+count);            }
+                return View("Welcome", "Add created successfully...");
+            }
             else
             {
                 return View("Error", "Something went wrong");
