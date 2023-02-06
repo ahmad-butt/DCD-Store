@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DCD_Store.Models;
-using post_add.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,6 +29,22 @@ namespace DCD_Store.Controllers
         public IActionResult PostAdd()
         {
             return View("PostAdd");
+        }
+
+        public IActionResult ViewAdd()
+        {
+
+            List<string> list = new();
+            list.Add("Custom Add");
+            list.Add("This is the dummy Descritption");
+            list.Add("DharamPura");
+            list.Add("Weird One");
+            list.Add("CR7");
+            list.Add("+696969");
+            list.Add("cr7@goat.com");
+            list.Add("/file.jpg");
+
+            return View("ViewAdd",list);
         }
 
         public IActionResult Login()
@@ -61,11 +76,13 @@ namespace DCD_Store.Controllers
                 Directory.CreateDirectory(path);
 
                 int count = 0;
+                string photo_path = "";
                 foreach (var file in postedFiles)
                 {
                     count++;
                     var fileName = Path.GetFileName(file.FileName);
                     var pathWithFileName = Path.Combine(path, fileName);
+                    photo_path = fileName;
                     using (FileStream stream = new
                         FileStream(pathWithFileName,
                         FileMode.Create))
@@ -74,7 +91,24 @@ namespace DCD_Store.Controllers
                     }
                 }
 
-                return View("Welcome", "Add created successfully...");
+                // preparing data
+                List<string> list = new();
+                list.Add(add.Title);
+                list.Add(add.Description);
+                list.Add(add.Category);
+                list.Add(add.City);
+
+                var context = new DcdStoreContext();
+
+                List<User> u = (List<User>)context.Users.Where(u => u.ID == add.UserId).ToList();
+
+                list.Add(u[0].Username);
+                list.Add(u[0].Phone);
+                list.Add(u[0].Email);
+                list.Add("/Uploads/" + add.Id + "/" + photo_path);
+
+                //return View("Error", "Something Happend");
+                return View("ViewAdd", list);
             }
             else
             {
