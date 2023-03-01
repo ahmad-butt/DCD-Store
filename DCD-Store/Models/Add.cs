@@ -15,12 +15,14 @@ public class Add : FullAuditModel
     public string Title { get; set; }
 
     [Required(ErrorMessage = "Dscription is necessary")]
-    [MaxLength(50, ErrorMessage = "Maximum 500 characters are allowed")]
+    [MaxLength(500, ErrorMessage = "Maximum 500 characters are allowed")]
     [MinLength(3, ErrorMessage = "Minimum of 10 characters are required")]
     public string Description { get; set; }
 
     public string City { get; set; }
     public string Category { get; set; }
+
+    public string? PhotoPath { get; set;}
 }
 
 

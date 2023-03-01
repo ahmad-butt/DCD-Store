@@ -30,8 +30,27 @@ namespace DCD_Store.Models
 
             return newAdd;
         }
+        public List<Add> ViewAdds(string category)
+        {
+            List<Add> adds = new();
 
+            foreach(Add add in context.Adds)
+            {
+                if(add.Category == category)
+                {
+                    adds.Add(add);
+                }
+            }
+            return adds;
+        }
 
-	}
+        public void UpdatePhotoPath(int id, string path)
+        {
+            Add add = context.Adds.Where<Add>(add=>add.Id == id).ToList()[0];
+            add.PhotoPath = path;
+            context.SaveChanges();
+        }
+
+    }
 }
 

@@ -1,3 +1,67 @@
-﻿<div>
-    <h1>@Model</h1>
-</div>
+﻿@model List<Add>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/featuredCard.css" asp-append-version="true" />
+</head>
+<body>
+    @{
+        foreach (Add add in Model)
+        {
+        <div style="margin: 20px; width: 500px" class="card p-3">
+
+            <div class="d-flex justify-content-between align-items-center ">
+                <div class="mt-2">
+                    <h4 class="main-heading text-uppercase">@add.Title</h4>
+                    <div class="mt-5">
+                        <h5 class="text-uppercase mb-0">@add.City</h5>
+                        <h5 class="mt-0">@add.Category</h5>
+                        <div class="d-flex flex-row user-ratings">
+                            <div class="ratings">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h6 class="text-muted ml-1">4/5</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="image">
+                    <img src="/Uploads/@add.Id/@add.PhotoPath" width="200">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+                <span>Available colors</span>
+                <div class="colors">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+
+            <p>@add.Description</p>
+
+            @{
+                if (add.UserId == int.Parse(Context.Request.Cookies["uid"]))
+                {
+                    <div>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary">Delete</button>
+                    </div>
+                }
+            }
+        </div>
+        }
+    }
+</body>
+</html>
+
+

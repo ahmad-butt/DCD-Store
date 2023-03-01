@@ -107,6 +107,7 @@ namespace DCD_Store.Controllers
                 list.Add(u[0].Phone);
                 list.Add(u[0].Email);
                 list.Add("/Uploads/" + add.Id + "/" + photo_path);
+                addRepo.UpdatePhotoPath(add.Id, photo_path);
 
                 //return View("Error", "Something Happend");
                 return View("ViewAdd", list);
@@ -119,7 +120,8 @@ namespace DCD_Store.Controllers
         [HttpGet]
         public IActionResult CategoryDetail(string category)
         {
-            return View("Category", category);
+            List<Add> adds = addRepo.ViewAdds(category);
+            return View("Category", adds);
         }
     }
 }
