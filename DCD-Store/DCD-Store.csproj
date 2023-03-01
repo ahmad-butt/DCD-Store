@@ -15,11 +15,13 @@
     <None Remove="Views\Home\" />
     <None Remove="Views\Authentication\" />
     <None Remove="Interfaces\" />
+    <None Remove="Models\Interfces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Authentication\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Models\Interfces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />

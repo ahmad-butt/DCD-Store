@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using DCD_Store.Models.Interfces;
+
 namespace DCD_Store.Models
 {
-	public class UserRepository
+	public class UserRepository : IUserRepository
 	{
         DcdStoreContext context;
         public UserRepository()

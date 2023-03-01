@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Numerics;
+using DCD_Store.Models.Interfces;
 
 namespace DCD_Store.Models
 {
-	public class AddRepository
+	public class AddRepository : IAddRepository
 	{
         DcdStoreContext context;
         public AddRepository()

@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using DCD_Store.Models;
 using Microsoft.AspNetCore.Mvc;
+using DCD_Store.Models.Interfces;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +14,12 @@ namespace DCD_Store.Controllers
     public class HomeController : Controller
     {
         private readonly IWebHostEnvironment Environment;
+        IAddRepository addRepo;
 
-        public HomeController(IWebHostEnvironment environment)
+        public HomeController(IWebHostEnvironment environment, IAddRepository addRepo)
         {
-
             Environment = environment;
+            this.addRepo = addRepo;
         }
 
         // GET: /<controller>/
@@ -61,7 +63,6 @@ namespace DCD_Store.Controllers
         public IActionResult PostAdd(string title, string description, string category, string city, List<IFormFile> postedFiles)
         {
             int uid = int.Parse(HttpContext.Request.Cookies["uid"]);
-            AddRepository addRepo = new AddRepository();
             Add? add = addRepo.PostAdd(uid:uid, title: title, description: description, city: city, category: category); 
             if (add != null)
             {
