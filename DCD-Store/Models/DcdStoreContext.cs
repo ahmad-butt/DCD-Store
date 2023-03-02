@@ -12,7 +12,7 @@ public partial class DcdStoreContext : DbContext
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost; Database=DCD_Store; User Id=sa; Password=rootroot123; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost; Database=DCD_Store; User Id=sa; Password=132qweasd; TrustServerCertificate=True");
 
     public override int SaveChanges()
     {

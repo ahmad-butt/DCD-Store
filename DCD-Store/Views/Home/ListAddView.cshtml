@@ -7,18 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/featuredCard.css" asp-append-version="true" />
 </head>
-<body>
-    @{
+<body style="margin-bottom:75px">
+    @{  int x = 0;
+
+        if (Model.Count() == 0)
+{
+            <h1> No Adds in this Category </h1>
+}
+
         foreach (Add add in Model)
         {
-        <div style="margin: 20px; width: 500px" class="card p-3">
+            x += 1;
 
+        <br/>
+        <div style="margin: auto; width: 80%" class="card p-3">
+            <h6 class="text-muted ml-1">@x/@Model.Count()</h6>
             <div class="d-flex justify-content-between align-items-center ">
                 <div class="mt-2">
-                    <h4 class="main-heading text-uppercase">@add.Title</h4>
+                    <h5 class="main-heading text-uppercase">@add.Title</h5>
                     <div class="mt-5">
-                        <h5 class="text-uppercase mb-0">@add.City</h5>
-                        <h5 class="mt-0">@add.Category</h5>
+                        <h6 class="text-uppercase mb-0">@add.City</h6>
+                        <h6 class="mt-0">@add.Category</h6>
                         <div class="d-flex flex-row user-ratings">
                             <div class="ratings">
                                 <i class="fa fa-star"></i>
@@ -26,7 +35,6 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <h6 class="text-muted ml-1">4/5</h6>
                         </div>
                     </div>
                 </div>
@@ -35,31 +43,24 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
-                <span>Available colors</span>
-                <div class="colors">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-            </div>
 
 
             <p>@add.Description</p>
+            <div>
+                <a asp-action="ViewAdd" asp-route-id="@add.Id"><button class="btn btn-primary" >View</button></a>
 
-            @{
-                if (add.UserId == int.Parse(Context.Request.Cookies["uid"]))
-                {
-                    <div>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-primary">Delete</button>
-                    </div>
+                @{
+                    if (!string.IsNullOrEmpty(Context.Request.Cookies["user"]) && add.UserId == int.Parse(Context.Request.Cookies["uid"]))
+                    {
+                        <a asp-action="EditAdd" asp-route-id="@add.Id"><button class="btn btn-primary" >Edit</button></a>
+                        <a asp-action="Delete" asp-route-id="@add.Id"><button class="btn btn-primary">Remove Add</button></a>
+                    }
                 }
-            }
+            </div>
+
         </div>
         }
+                    <br/>
     }
 </body>
 </html>

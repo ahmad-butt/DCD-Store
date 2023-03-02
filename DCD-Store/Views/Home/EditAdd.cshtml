@@ -1,11 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "DCD Store Ad Upload";
+    ViewData["Title"] = "DCD Store Ad Edit";
 }
+@model Add
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DCD Store Ad Upload</title>
+    <title>DCD Store Add Edit</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
@@ -17,19 +18,19 @@
         }
     }
     <div class="container">
-        <h2 class="text-center mt-5">DCD Store Ad Upload</h2>
+        <h2 class="text-center mt-5">DCD Store Add Edit</h2>
         <form name="AddForm" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
+                <input asp-for="Title" placeholder="Enter title">
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description"></textarea>
+                <textarea asp-for="Description"></textarea>
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
-                <select class="form-control" id="city" name="city">
+                <select asp-for="City">
                     <option>Select City</option>
                     <option>Lahore</option>
                     <option>Kasur</option>
@@ -40,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label for="category">Category:</label>
-                <select class="form-control" id="category" name="category">
+                <select asp-for="Category">
                     <option>Select Category</option>
                     <option>Outdoor</option>
                     <option>Clothing</option>
@@ -66,7 +67,7 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: '/Home/PostAdd',
+                    url: '/Home/EditAdd',
                     type: 'POST',
                     data: formData,
                     processData: false,

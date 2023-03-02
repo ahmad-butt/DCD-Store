@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <title>@ViewData["Title"] - DCD_Store</title>
+
+
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <button class="navbar-toggler"
@@ -29,42 +33,77 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" asp-action="PostAdd">
                                     <button type="button" class="btn btn-warning">
-                                        New Ad
+                                        New Add
+                                    </button>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" asp-action="MyAdds">
+                                    <button type="button" class="btn btn-warning">
+                                        My Adds
                                     </button>
                                 </a>
                             </li>
                         }
                     }
-                    </ul>
+                </ul>
 
-                    @{
-                        if (string.IsNullOrEmpty(Context.Request.Cookies["user"]))
-                        {
-                            <a asp-action="Login">
-                                <button style="margin-left: 10px" type="button" class="btn btn-warning">Login</button>
-                            </a>
-                        }
-                        else
-                        {
-                            <form class="d-flex input-group w-auto">
-                                <input type="search"
-                                       class="form-control"
-                                       placeholder="Search Product"
-                                       aria-label="Search" />
-                                <button type="button" class="btn btn-warning">Search</button>
-                            </form>
-                            <p style="margin: 20px; color: white; font-weight: 500" class="font-italic">Welcome, @Context.Request.Cookies["user"]</p>
-                            <a asp-action="Signout">
-                                <button style="margin-left: 10px" type="button" class="btn btn-warning">Signout</button>
-                            </a>
-                        }
+                @{
+                    if (string.IsNullOrEmpty(Context.Request.Cookies["user"]))
+                    {
+                        <a asp-action="Login">
+                            <button style="margin-left: 10px" type="button" class="btn btn-warning">Login</button>
+                        </a>
                     }
-                </div>
+                    else
+                    {
+                        <form class="d-flex input-group w-auto" id="search-form">
+                            <input type="search"
+                                   name="txt"
+                                   id="txt"
+                                   class="form-control"
+                                   placeholder="Search Product"
+                                   aria-label="Search" />
+                            <button type="button" name="Searchbtn" id="Searchbtn" class="btn btn-warning">Search</button>
+                        </form>
+
+                        <script>
+                            $(document).ready(function () {
+                            $('#Searchbtn').click(function () {
+                                    var searchTerm = $('#txt').val(); // Get the search term from the input field
+                                $.ajax({
+                                    url: "/Home/Index",
+                                    type: 'GET',
+                                    processData: false,
+                                    contentType: false,
+                                        success: function (result) {
+                                            // Do something with the result, e.g. update the UI with search results
+                                            console.log("Happy")
+                                            window.location.href = '/Home/SearchAdds?txt=' + searchTerm;
+                                    },
+                                        error: function (jqXHR, textStatus, errorThrown) {
+                                            // Handle any errors that occur during the AJAX request
+                                            console.log("Sad")
+
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+
+                        <p style="margin: 20px; color: white; font-weight: 500" class="font-italic">Welcome, @Context.Request.Cookies["user"]</p>
+                        <a asp-action="Signout">
+                            <button style="margin-left: 10px" type="button" class="btn btn-warning">Signout</button>
+                        </a>
+                    }
+                }
+            </div>
         </div>
     </nav>
     @RenderSection("hero", required: false)
     @RenderBody()
-    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <div style="position: fixed; left: 0; bottom: 0; width:100%;" class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
             Copyright © 2023. All rights reserved.

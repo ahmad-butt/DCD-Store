@@ -10,6 +10,12 @@ namespace DCD_Store.Models.Interfces
         public List<Add> ViewAdds(string category);
 
         public void UpdatePhotoPath(int uid, string path);
+        List<Add> MyAdds(int v);
+        void RemoveAdd(int id);
+        Add GetAdd(int id);
+        void UpdateAdd(Add add);
+        List<Add> Top3Adds();
+        List<Add> SearchAdds(string txt);
     }
 }
 

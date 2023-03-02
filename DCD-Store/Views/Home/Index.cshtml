@@ -1,4 +1,6 @@
-﻿<div class="container-fluid">
+﻿@model List<Add>
+
+<div class="container-fluid">
     @section hero{
         <div class="row" style="margin:10px">
             <div style="margin-top: 30px" class="col-12 text-center">
@@ -12,41 +14,38 @@
             <h2 class="mt-5">Categories</h2>
             <div style="margin: 20px" class="row">
                 @{
+                    Html.RenderPartial("_Categories", "Outdoor");
+                }
+                @{
+                    Html.RenderPartial("_Categories", "Clothing");
+                }
+                @{
                     Html.RenderPartial("_Categories", "Electronics");
                 }
                 @{
-                    Html.RenderPartial("_Categories", "Household");
+                    Html.RenderPartial("_Categories", "Vehicles");
                 }
                 @{
-                    Html.RenderPartial("_Categories", "Cars");
+                    Html.RenderPartial("_Categories", "Sports");
                 }
                 @{
-                    Html.RenderPartial("_Categories", "Bikes");
-                }
-                @{
-                    Html.RenderPartial("_Categories", "Jets");
-                }
-                @{
-                    Html.RenderPartial("_Categories", "Shoes");
+                    Html.RenderPartial("_Categories", "Others");
                 }
             </div>
         </div>
     </div>
-    <div class="row">
+    <div style="margin-bottom:75px" class="row">
         <div class="col-12 text-center my-5">
             <h2>Popular Ads</h2>
         </div>
         <div style="margin-bottom: 20px" class="col-12">
             <div class="height d-flex flex-row justify-content-around align-items-center">
                 @{
-                    Html.RenderPartial("_FeaturedItems");
+
+                    Html.RenderPartial("ListAddView", Model);
+
                 }
-                @{
-                    Html.RenderPartial("_FeaturedItems");
-                }
-                @{
-                    Html.RenderPartial("_FeaturedItems");
-                }
+
             </div>
         </div>
     </div>

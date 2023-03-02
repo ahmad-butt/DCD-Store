@@ -18,14 +18,14 @@
     }
     <div class="container">
         <h2 class="text-center mt-5">DCD Store Ad Upload</h2>
-        <form method="post" action="/Home/PostAdd" name="postadd" enctype="multipart/form-data">
+        <form name="AddForm" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" name ="description" id="description" rows="3" placeholder="Enter description"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description"></textarea>
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
@@ -42,18 +42,45 @@
                 <label for="category">Category:</label>
                 <select class="form-control" id="category" name="category">
                     <option>Select Category</option>
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
+                    <option>Outdoor</option>
+                    <option>Clothing</option>
+                    <option>Electronics</option>
+                    <option>Vehicles</option>
+                    <option>Sports</option>
+                    <option>Others</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="images">Images:</label>
-                <input type="file" name="postedFiles" multiple />
+                <input type="file" name="file" id="file"/>
             </div>
-            <button style="margin-bottom: 265px" class="btn btn-primary">Submit</button>
+            <button type="submit" style="margin-bottom: 265px" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#add-form').submit(function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: '/Home/PostAdd',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        alert('Files Uploaded!' + data);
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
